@@ -6,16 +6,42 @@ public class Player {
 	private PlayerClass classe;
 	private PlayerWeapon arma;
 	private GameDifficulty dificuldade;
-	private int vidaJogador = 100;
 	
 	
-	public Player(String nome, String sexo, PlayerClass classe, PlayerWeapon arma, GameDifficulty dificuldade) {
+	public Player(String nome, String sexo, PlayerClass classe, int arma, GameDifficulty dificuldade) {
 		super();
 		this.nome = nome;
 		this.sexo = sexo;
 		this.classe = classe;
-		this.arma = arma;
+		this.arma = classe.getArmas()[arma];
 		this.dificuldade = dificuldade;
 	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public String getSexo() {
+		return sexo;
+	}
+
+
+	public PlayerClass getClasse() {
+		return classe;
+	}
+
+
+	public PlayerWeapon getArma() {
+		return arma;
+	}
+
+
+	public GameDifficulty getDificuldade() {
+		return dificuldade;
+	}
+	
+	
 	
 }
