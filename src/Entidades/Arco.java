@@ -2,7 +2,7 @@ package Entidades;
 
 public class Arco extends PlayerWeapon {
 
-	private final static double DANO = 25;
+	private final static int DANO = 25;
 	
 	public Arco() {
 		super(DANO);
@@ -10,7 +10,7 @@ public class Arco extends PlayerWeapon {
 
 	@Override
 	public String toString() {
-		return "arco";
+		return " atirou uma flecha";
 	}
 	
 }

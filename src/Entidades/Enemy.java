@@ -1,13 +1,13 @@
 package Entidades;
 
-public abstract class PlayerClass {
+public abstract class Enemy {
 	
 	private int defesa;
-	private PlayerWeapon[] armas;
+	private EnemyWeapon[] armas;
 	private double vida;
 	private int ataque;
 	
-	public PlayerClass(int ataque, int defesa, PlayerWeapon[] armas, double vida) {
+	public Enemy(int ataque, int defesa, EnemyWeapon[] armas, double vida) {
 		this.ataque = ataque;
 		this.defesa = defesa;
 		this.armas = armas;
@@ -26,7 +26,7 @@ public abstract class PlayerClass {
 		this.defesa = defesa;
 	}
 
-	public PlayerWeapon getArmas(int arma) {
+	public EnemyWeapon getArmas(int arma) {
 		return armas[arma];
 	}
 

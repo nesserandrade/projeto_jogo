@@ -1,16 +1,16 @@
 package Entidades;
 
-public class Clava extends PlayerWeapon {
+public class MachadoInimigo extends EnemyWeapon {
 
 	private final static int DANO = 20;
 	
-	public Clava() {
+	public MachadoInimigo() {
 		super(DANO);
 	}
 
 	@Override
 	public String toString() {
-		return " deu um golpe com sua clava";
+		return " brandiu o seu machado";
 	}
 	
 }

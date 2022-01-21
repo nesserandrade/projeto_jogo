@@ -13,7 +13,7 @@ public class Player {
 		this.nome = nome;
 		this.sexo = sexo;
 		this.classe = classe;
-		this.arma = classe.getArmas()[arma];
+		this.arma = classe.getArmas(arma - 1);
 		this.dificuldade = dificuldade;
 	}
 

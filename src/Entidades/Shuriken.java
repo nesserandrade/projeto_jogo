@@ -2,7 +2,7 @@ package Entidades;
 
 public class Shuriken extends PlayerWeapon {
 
-	private final static double DANO = 15;
+	private final static int DANO = 20;
 	
 	public Shuriken() {
 		super(DANO);
@@ -10,7 +10,7 @@ public class Shuriken extends PlayerWeapon {
 
 	@Override
 	public String toString() {
-		return "shuriken";
+		return " lançou um shuriken";
 	}
 	
 }
