@@ -6,8 +6,8 @@ public class Player {
 	private PlayerClass classe;
 	private PlayerWeapon arma;
 	private GameDifficulty dificuldade;
-	
-	
+	private int coins;
+
 	public Player(String nome, String sexo, PlayerClass classe, int arma, GameDifficulty dificuldade) {
 		super();
 		this.nome = nome;
@@ -40,6 +40,15 @@ public class Player {
 
 	public GameDifficulty getDificuldade() {
 		return dificuldade;
+	}
+	
+	public int getCoins() {
+		return coins;
+	}
+
+
+	public void setCoins(int coins) {
+		this.coins = coins;
 	}
 	
 	

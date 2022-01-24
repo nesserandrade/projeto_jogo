@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Entidades.GameDifficulty;
+import Entidades.Loot;
 import Entidades.Machado;
 import Entidades.MachadoInimigo;
 import Entidades.OrcArmorer;
@@ -254,6 +255,8 @@ public class Game {
     	System.exit(0);
     }
     System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+    Loot loot = new Loot();
+    loot.lootChance(jogador);
     System.out.println("Sua vida depois do combate: " + classeJogador.getVida());
     System.out.println("Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
     System.out.println("Você quer usar a armadura do inimigo?");
@@ -282,6 +285,7 @@ public class Game {
     	System.exit(0);
     }
     System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+    loot.lootChance(jogador);
     System.out.println("Sua vida depois do combate: " + classeJogador.getVida());
     System.out.println("Após derrotar o Alquimista, você olha em volta, tentando reconhecer alguma poção do estoque do inimigo. Em uma mesa, você reconhece uma pequena garrafa de vidro contendo um líquido levemente rosado, pega a garrafa e pondera se deve beber um gole.");
     System.out.println("O que você gostaria de fazer?");
@@ -333,6 +337,7 @@ public class Game {
     	System.exit(0);
     }
     System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+    loot.lootChance(jogador);
     System.out.println("Você conseguiu!");
     if (motivacao.equals("1")) {
     	System.out.println("O êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.");
