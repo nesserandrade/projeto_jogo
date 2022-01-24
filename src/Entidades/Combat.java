@@ -57,7 +57,12 @@ public class Combat {
 						if (classeJogador.getVida() < 1) {
 							String texto = "";
 							if (motivacao.equals("1")) {
-								texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								if (jogador.getSexo().equals("M")) {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								}
+								else {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.";
+								}
 							}
 							if (motivacao.equals("2")) {
 								texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -74,7 +79,12 @@ public class Combat {
 						if (classeJogador.getVida() < 1) {
 							String texto = "";
 							if (motivacao.equals("1")) {
-								texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								if (jogador.getSexo().equals("M")) {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								}
+								else {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.";
+								}
 							}
 							if (motivacao.equals("2")) {
 								texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -93,7 +103,12 @@ public class Combat {
 						if (classeJogador.getVida() < 1) {
 							String texto = "";
 							if (motivacao.equals("1")) {
-								texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								if (jogador.getSexo().equals("M")) {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								}
+								else {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.";
+								}
 							}
 							if (motivacao.equals("2")) {
 								texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -136,7 +151,12 @@ public class Combat {
 						if (classeJogador.getVida() < 1) {
 							String texto = "";
 							if (motivacao.equals("1")) {
-								texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								if (jogador.getSexo().equals("M")) {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								}
+								else {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.";
+								}
 							}
 							if (motivacao.equals("2")) {
 								texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -153,7 +173,12 @@ public class Combat {
 						if (classeJogador.getVida() < 1) {
 							String texto = "";
 							if (motivacao.equals("1")) {
-								texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								if (jogador.getSexo().equals("M")) {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								}
+								else {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.";
+								}
 							}
 							if (motivacao.equals("2")) {
 								texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -171,7 +196,12 @@ public class Combat {
 						if (classeJogador.getVida() < 1) {
 							String texto = "";
 							if (motivacao.equals("1")) {
-								texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								if (jogador.getSexo().equals("M")) {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
+								}
+								else {
+									texto = "A glória que buscavas não será sua, e a cidade aguarda por sua próxima heroína.";
+								}
 							}
 							if (motivacao.equals("2")) {
 								texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
