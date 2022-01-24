@@ -19,6 +19,7 @@ import Entidades.Arco;
 import Entidades.Besta;
 import Entidades.CajadoInimigo;
 import Entidades.Clava;
+import Entidades.Combat;
 import Entidades.Enemy;
 import Entidades.EnemyWeapon;
 import Entidades.EspadaInimigo;
@@ -246,71 +247,8 @@ public class Game {
     System.out.println("Enquanto seu olhar percorre a sala, você ouve a porta se fechando e gira rapidamente para olhar para trás. Ali, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, está um dos capitães do inimigo. Um orque horrendo, de armadura, capacete e espada em punho, em posição de combate. Ele avança em sua direção.");
     Enemy armeiro = new OrcArmorer();
     EnemyWeapon espada = new EspadaInimigo();
-    while(armeiro.getVida() > 0) {
-    	System.out.println("Sua vida: " + classeJogador.getVida());
-    	System.out.println("Vida do inimigo: " + armeiro.getVida());
-    	System.out.println("O que você gostaria de fazer?");
-    	System.out.println("\t# 1 - Lutar");
-    	System.out.println("\t# 2 - Fugir");
-    	String decisao = keyboard.nextLine();
-        while ((!decisao.equals("1")) && (!decisao.equals("2"))) {
-        	System.out.println("Opção inválida! Digite novamente!");
-        	decisao = keyboard.nextLine();
-        }
-        if (decisao.equals("1")) { 
-        	double vidaJogador = classeJogador.getVida();
-        	double vidaArmeiro = armeiro.getVida();
-        	int randomDamagePlayer = 1 + random.nextInt(20);
-        	int randomDamageEnemy = 1 + random.nextInt(20);
-        	
-        	if (dificuldade.equals("1") || dificuldade.equals("2")) {
-        	double damageTaken = nivelDeDificuldade.damageModifier((espada.getDano() + armeiro.getAtaque() + randomDamageEnemy)) - classeJogador.getDefesa();
-        	double damageDealt = (arma.getDano() + classeJogador.getAtaque()  + randomDamagePlayer) - armeiro.getDefesa();
-        	vidaJogador = vidaJogador - damageTaken;
-        	vidaArmeiro = vidaArmeiro - damageDealt;
-        	classeJogador.setVida(vidaJogador);
-        	armeiro.setVida(vidaArmeiro);
-        	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-        	System.out.println(armeiro.toString() + espada.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-        	if (classeJogador.getVida() < 1) {
-        		String texto = "";
-        		if (motivacao.equals("1")) {
-        			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-        		}
-        		if (motivacao.equals("2")) {
-        			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-        		}
-        		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-        		break;
-        	}
-        }
-        	if (dificuldade.equals("3")) {
-            	double damageTaken = (espada.getDano() + armeiro.getAtaque() + randomDamageEnemy) - classeJogador.getDefesa();
-            	double damageDealt = nivelDeDificuldade.damageModifier((arma.getDano() + classeJogador.getAtaque() + randomDamagePlayer)) - armeiro.getDefesa();
-            	vidaJogador = vidaJogador - damageTaken;
-            	vidaArmeiro = vidaArmeiro - damageDealt;
-            	classeJogador.setVida(vidaJogador);
-            	armeiro.setVida(vidaArmeiro);
-            	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-            	System.out.println(armeiro.toString() + espada.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-            	if (classeJogador.getVida() < 1) {
-            		String texto = "";
-            		if (motivacao.equals("1")) {
-            			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-            		}
-            		if (motivacao.equals("2")) {
-            			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-            		}
-            		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-            		break;
-            	}
-            }	
-        }
-        if (decisao.equals("2")) {
-        	System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-        	System.exit(0);
-        }
-    }
+    Combat combate = new Combat();
+    combate.fight(armeiro, classeJogador, dificuldade, nivelDeDificuldade, arma, espada, jogador, motivacao);
     if (classeJogador.getVida() < 1) {
     	System.out.println("FIM DO JOGO!");
     	System.exit(0);
@@ -338,71 +276,7 @@ public class Game {
     System.out.println("No fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque horrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.");
     Enemy alquimista = new OrcShaman();
     EnemyWeapon cajado = new CajadoInimigo();
-    while(alquimista.getVida() > 0) {
-    	System.out.println("Sua vida: " + classeJogador.getVida());
-    	System.out.println("Vida do inimigo: " + alquimista.getVida());
-    	System.out.println("O que você gostaria de fazer?");
-    	System.out.println("\t# 1 - Lutar");
-    	System.out.println("\t# 2 - Fugir");
-    	String decisao = keyboard.nextLine();
-        while ((!decisao.equals("1")) && (!decisao.equals("2"))) {
-        	System.out.println("Opção inválida! Digite novamente!");
-        	decisao = keyboard.nextLine();
-        }
-        if (decisao.equals("1")) { 
-        	double vidaJogador = classeJogador.getVida();
-        	double vidaAlquimista = alquimista.getVida();
-        	int randomDamagePlayer = 1 + random.nextInt(20);
-        	int randomDamageEnemy = 1 + random.nextInt(20);
-        	
-        	if (dificuldade.equals("1") || dificuldade.equals("2")) {
-        	double damageTaken = nivelDeDificuldade.damageModifier((cajado.getDano() + alquimista.getAtaque() + randomDamageEnemy)) - classeJogador.getDefesa();
-        	double damageDealt = (arma.getDano() + classeJogador.getAtaque() + randomDamagePlayer) - alquimista.getDefesa();
-        	vidaJogador = vidaJogador - damageTaken;
-        	vidaAlquimista = vidaAlquimista - damageDealt;
-        	classeJogador.setVida(vidaJogador);
-        	alquimista.setVida(vidaAlquimista);
-        	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-        	System.out.println(alquimista.toString() + cajado.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-        	if (classeJogador.getVida() < 1) {
-        		String texto = "";
-        		if (motivacao.equals("1")) {
-        			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-        		}
-        		if (motivacao.equals("2")) {
-        			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-        		}
-        		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-        		break;
-        	}
-        }
-        	if (dificuldade.equals("3")) {
-            	double damageTaken = (cajado.getDano() + alquimista.getAtaque() + randomDamageEnemy) - classeJogador.getDefesa();
-            	double damageDealt = nivelDeDificuldade.damageModifier((arma.getDano() + classeJogador.getAtaque() + randomDamagePlayer)) - alquimista.getDefesa();
-            	vidaJogador = vidaJogador - damageTaken;
-            	vidaAlquimista = vidaAlquimista - damageDealt;
-            	classeJogador.setVida(vidaJogador);
-            	alquimista.setVida(vidaAlquimista);
-            	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-            	System.out.println(alquimista.toString() + cajado.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-            	if (classeJogador.getVida() < 1) {
-            		String texto = "";
-            		if (motivacao.equals("1")) {
-            			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-            		}
-            		if (motivacao.equals("2")) {
-            			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-            		}
-            		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-            		break;
-            	}
-            }	
-        }
-        if (decisao.equals("2")) {
-        	System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-        	System.exit(0);
-        }
-    }
+    combate.fight(alquimista, classeJogador, dificuldade, nivelDeDificuldade, arma, cajado, jogador, motivacao);
     if (classeJogador.getVida() < 1) {
     	System.out.println("FIM DO JOGO!");
     	System.exit(0);
@@ -440,71 +314,7 @@ public class Game {
     if (acao.equals("1")) { 
     	Enemy lider = new OrcLeader();
         EnemyWeapon machadoduplo = new MachadoInimigo();
-        while(lider.getVida() > 0) {
-        	System.out.println("Sua vida: " + classeJogador.getVida());
-        	System.out.println("Vida do inimigo: " + lider.getVida());
-        	System.out.println("O que você gostaria de fazer?");
-        	System.out.println("\t# 1 - Lutar");
-        	System.out.println("\t# 2 - Fugir");
-        	String decisao = keyboard.nextLine();
-            while ((!decisao.equals("1")) && (!decisao.equals("2"))) {
-            	System.out.println("Opção inválida! Digite novamente!");
-            	decisao = keyboard.nextLine();
-            }
-            if (decisao.equals("1")) { 
-            	double vidaJogador = classeJogador.getVida();
-            	double vidaLider = lider.getVida();
-            	int randomDamagePlayer = 1 + random.nextInt(20);
-            	int randomDamageEnemy = 1 + random.nextInt(20);
-            	
-            	if (dificuldade.equals("1") || dificuldade.equals("2")) {
-            	double damageTaken = nivelDeDificuldade.damageModifier((machadoduplo.getDano() + lider.getAtaque() + randomDamageEnemy)) - classeJogador.getDefesa();
-            	double damageDealt = (arma.getDano() + classeJogador.getAtaque()  + randomDamagePlayer) - lider.getDefesa();
-            	vidaJogador = vidaJogador - damageTaken;
-            	vidaLider = vidaLider - damageDealt;
-            	classeJogador.setVida(vidaJogador);
-            	lider.setVida(vidaLider);
-            	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-            	System.out.println(lider.toString() + machadoduplo.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-            	if (classeJogador.getVida() < 1) {
-            		String texto = "";
-            		if (motivacao.equals("1")) {
-            			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-            		}
-            		if (motivacao.equals("2")) {
-            			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-            		}
-            		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-            		break;
-            	}
-            }
-            	if (dificuldade.equals("3")) {
-                	double damageTaken = (machadoduplo.getDano() + lider.getAtaque() + randomDamageEnemy) - classeJogador.getDefesa();
-                	double damageDealt = nivelDeDificuldade.damageModifier((arma.getDano() + classeJogador.getAtaque() + randomDamagePlayer)) - lider.getDefesa();
-                	vidaJogador = vidaJogador - damageTaken;
-                	vidaLider = vidaLider - damageDealt;
-                	classeJogador.setVida(vidaJogador);
-                	lider.setVida(vidaLider);
-                	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-                	System.out.println(lider.toString() + machadoduplo.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-                	if (classeJogador.getVida() < 1) {
-                		String texto = "";
-                		if (motivacao.equals("1")) {
-                			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-                		}
-                		if (motivacao.equals("2")) {
-                			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-                		}
-                		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-                		break;
-                	}
-            	}
-            }
-            if (decisao.equals("2")) {
-            	System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-            	System.exit(0);
-            }
-        }
+        combate.fight(lider, classeJogador, dificuldade, nivelDeDificuldade, arma, machadoduplo, jogador, motivacao);
     }
     if (acao.equals("2")) { 
     	System.out.println("O Orc Líder ataca primeiro!");
@@ -516,71 +326,7 @@ public class Game {
     	vidaJogador = vidaJogador - damageTaken;
     	classeJogador.setVida(vidaJogador);
     	System.out.println("O Orc Líder faz um ataque surpresa e causa " + damageTaken + " de dano!");
-    	while(lider.getVida() > 0) {
-        	System.out.println("Sua vida: " + classeJogador.getVida());
-        	System.out.println("Vida do inimigo: " + lider.getVida());
-        	System.out.println("O que você gostaria de fazer?");
-        	System.out.println("\t# 1 - Lutar");
-        	System.out.println("\t# 2 - Fugir");
-        	String decisao = keyboard.nextLine();
-            while ((!decisao.equals("1")) && (!decisao.equals("2"))) {
-            	System.out.println("Opção inválida! Digite novamente!");
-            	decisao = keyboard.nextLine();
-            }
-            if (decisao.equals("1")) { 
-            	vidaJogador = classeJogador.getVida();
-            	double vidaLider = lider.getVida();
-            	int randomDamagePlayer = 1 + random.nextInt(20);
-            	randomDamageEnemy = 1 + random.nextInt(20);
-            	
-            	if (dificuldade.equals("1") || dificuldade.equals("2")) {
-            	damageTaken = nivelDeDificuldade.damageModifier((machadoduplo.getDano() + lider.getAtaque() + randomDamageEnemy)) - classeJogador.getDefesa();
-            	double damageDealt = (arma.getDano() + classeJogador.getAtaque()  + randomDamagePlayer) - lider.getDefesa();
-            	vidaJogador = vidaJogador - damageTaken;
-            	vidaLider = vidaLider - damageDealt;
-            	classeJogador.setVida(vidaJogador);
-            	lider.setVida(vidaLider);
-            	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-            	System.out.println(lider.toString() + machadoduplo.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-            	if (classeJogador.getVida() < 1) {
-            		String texto = "";
-            		if (motivacao.equals("1")) {
-            			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-            		}
-            		if (motivacao.equals("2")) {
-            			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-            		}
-            		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-            		break;
-            	}
-            }
-            	if (dificuldade.equals("3")) {
-                	damageTaken = (machadoduplo.getDano() + lider.getAtaque() + randomDamageEnemy) - classeJogador.getDefesa();
-                	double damageDealt = nivelDeDificuldade.damageModifier((arma.getDano() + classeJogador.getAtaque() + randomDamagePlayer)) - lider.getDefesa();
-                	vidaJogador = vidaJogador - damageTaken;
-                	vidaLider = vidaLider - damageDealt;
-                	classeJogador.setVida(vidaJogador);
-                	lider.setVida(vidaLider);
-                	System.out.println(classeJogador.toString() + jogador.getNome() + arma.toString() + " e causou " + damageDealt + " de dano ao inimigo." );
-                	System.out.println(lider.toString() + machadoduplo.toString() + " e causou " + damageTaken + " de dano ao jogador.");
-                	if (classeJogador.getVida() < 1) {
-                		String texto = "";
-                		if (motivacao.equals("1")) {
-                			texto = "A glória que buscavas não será sua, e a cidade aguarda por seu próximo herói.";
-                		}
-                		if (motivacao.equals("2")) {
-                			texto = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-                		}
-                		System.out.println("Você não estava preparado para a força do inimigo." + texto);
-                		break;
-                	}
-            	}
-            }
-            if (decisao.equals("2")) {
-            	System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-            	System.exit(0);
-            }
-        }
+    	combate.fight(lider, classeJogador, dificuldade, nivelDeDificuldade, arma, machadoduplo, jogador, motivacao);
     }
     if (classeJogador.getVida() < 1) {
     	System.out.println("FIM DO JOGO!");
